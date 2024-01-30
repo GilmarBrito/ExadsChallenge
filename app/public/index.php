@@ -1,3 +1,9 @@
 <?php
 
-phpinfo();
+declare(strict_types=1);
+
+require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+use ExadsChallenge\Core\Framework;
+
+$app = new Framework();
