@@ -5,6 +5,7 @@ namespace ExadsChallenge\Core;
 class Framework
 {
     private const CONTROLLER_NAMESPACE = '\\ExadsChallenge\\Controllers\\';
+    private const CONTROLLER_SUFFIX = 'Controller';
     protected string $controllerName = '';
     protected object|null $controllerObject = null;
     protected string $methodName = '';
@@ -28,7 +29,6 @@ class Framework
 
     private function dispatch(): self
     {
-
         $this
             ->setController()
             ->setMethod()
@@ -45,10 +45,9 @@ class Framework
             $this->controllerName = 'home';
         }
 
-        $this->controllerName = self::CONTROLLER_NAMESPACE . ucfirst($this->controllerName);
-
+        $this->controllerName = self::CONTROLLER_NAMESPACE . ucfirst($this->controllerName) . self::CONTROLLER_SUFFIX;
         if (class_exists($this->controllerName, true) === false) {
-            $this->controllerName = self::CONTROLLER_NAMESPACE . 'PageNotFound';
+            $this->controllerName = self::CONTROLLER_NAMESPACE . 'PageNotFound' . self::CONTROLLER_SUFFIX;
         }
 
         $this->controllerObject = new $this->controllerName();
@@ -72,7 +71,7 @@ class Framework
     private function checkRoute(): self
     {
         if (method_exists($this->controllerName, $this->methodName) === false) {
-            $this->controllerName = self::CONTROLLER_NAMESPACE . 'PageNotFound';
+            $this->controllerName = self::CONTROLLER_NAMESPACE . 'PageNotFound' . self::CONTROLLER_SUFFIX;
             $this->controllerObject = new $this->controllerName();
             $this->methodName = 'index';
         }
