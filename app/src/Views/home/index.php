@@ -28,17 +28,17 @@ require_once dirname(__DIR__) . '/header.php';
                 <li>Nginx Latest</li>
                 <li>MySQL v8.3.0</li>
             </ul>
-            <p>Build the containers:</p>
-            <pre><code class="lang-BASH"><span class="hljs-attribute">docker compose build</span>
+            <p>Step 1 - Clone this repo:</p>
+            <pre><code class="lang-BASH">git <span class="hljs-keyword">clone</span> <span class="hljs-title">git</span>@github.com:GilmarBrito/ExadsChallenge.git
 </code></pre>
-            <p>Execute:</p>
-            <pre><code class="lang-BASH">docker compose up <span class="hljs-_">-d</span> &amp;&amp; docker compose <span class="hljs-built_in">exec</span> php-service composer install
+            <p>Step 2 - Open folder:</p>
+            <pre><code class="lang-BASH"><span class="hljs-built_in">cd</span> ExadsChallenge
 </code></pre>
-            <p>If you prefer, you could run just one command, to build and execute:</p>
-            <pre><code class="lang-BASH">docker compose up --build <span class="hljs-_">-d</span> &amp;&amp; docker compose <span class="hljs-built_in">exec</span> php-service composer install
+            <p>Step 3 - Run and build the containers:</p>
+            <pre><code class="lang-BASH">docker compose up <span class="hljs-comment">--build -d</span>
 </code></pre>
-            <p>Execute:</p>
-            <pre><code class="lang-BASH">docker compose <span class="hljs-keyword">exec</span> php-service composer <span class="hljs-keyword">dump</span>-autoload --optimize
+            <p>Step 4 - Execute:</p>
+            <pre><code class="lang-BASH">docker compose <span class="hljs-keyword">exec</span> php-service composer install &amp;&amp; docker compose <span class="hljs-keyword">exec</span> php-service composer <span class="hljs-keyword">dump</span>-autoload --optimize
 </code></pre>
             <h2 id="challenges">Challenges</h2>
             <h3 id="1-prime-numbers">1. Prime Numbers</h3>
@@ -46,7 +46,7 @@ require_once dirname(__DIR__) . '/header.php';
             <p>Beside each number, print the numbers it is a multiple of (inside brackets and comma-separated). If
                 only multiple of itself then print “[PRIME]”.</p>
             <h4 id="execute">Execute</h4>
-            <pre><code class="lang-BASH"><span class="hljs-selector-tag">docker</span> <span class="hljs-selector-tag">compose</span> <span class="hljs-selector-tag">run</span> <span class="hljs-selector-tag">php-service</span> <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">bin</span>/<span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.php</span> <span class="hljs-selector-tag">app</span><span class="hljs-selector-pseudo">:prime</span> <span class="hljs-selector-attr">[]</span> <span class="hljs-selector-attr">[]</span>
+            <pre><code class="lang-BASH"><span class="hljs-selector-tag">docker</span> <span class="hljs-selector-tag">compose</span> <span class="hljs-selector-tag">run</span> <span class="hljs-selector-tag">php-service</span> <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">bin</span>/<span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.php</span> <span class="hljs-selector-tag">app</span><span class="hljs-selector-pseudo">:prime</span> <span class="hljs-selector-attr">[firstNumber]</span> <span class="hljs-selector-attr">[lastNumber]</span>
 </code></pre>
             <table>
                 <thead>
@@ -75,6 +75,11 @@ require_once dirname(__DIR__) . '/header.php';
                     </tr>
                 </tbody>
             </table>
+            <h4 id="relevant-code-files-">Relevant code files:</h4>
+            <ul>
+                <li><code>app/src/Libraries/PrimeNumbers.php</code></li>
+                <li><code>app/src/Console/PrimeNumbersCommand.php</code></li>
+            </ul>
             <h3 id="2-ascii-array">2. ASCII Array</h3>
             <p>Write a PHP script to generate a random array containing all the ASCII characters from comma (“,”) to
                 pipe (“|”). Then randomly remove and discard an arbitrary element from this newly generated array.</p>
@@ -110,6 +115,11 @@ require_once dirname(__DIR__) . '/header.php';
                     </tr>
                 </tbody>
             </table>
+            <h4 id="relevant-code-files-">Relevant code files:</h4>
+            <ul>
+                <li><code>app/src/Libraries/ASCIIArray.php</code></li>
+                <li><code>app/src/Console/ASCIIArrayCommand.php</code></li>
+            </ul>
             <h3 id="3-tv-series">3. TV Series</h3>
             <p>Populate a MySQL (InnoDB) database with data from at least 3 TV Series using the following structure:</p>
             <p><code>tv_series -&gt; (id, title, channel, gender);</code></p>
@@ -119,14 +129,23 @@ require_once dirname(__DIR__) . '/header.php';
             </ul>
             <p>Using OOP, write a code that tells when the next TV Series will air based on the current time-date or an
                 inputted time-date, and that can be optionally filtered by TV Series title.</p>
-            <h5 id="execute-after-run-up-docker-containers-">Execute (After run up docker containers)</h5>
+            <h4 id="execute-after-run-up-docker-containers-">Execute (After run up docker containers)</h4>
             <p><a href="http://localhost:8080/series">http://localhost:8080/series</a></p>
+            <h4 id="relevant-code-files-">Relevant code files:</h4>
+            <ul>
+                <li><code>app/src/Models/SeriesModel.php</code></li>
+                <li><code>app/src/Controllers/SeriesController.php</code></li>
+            </ul>
             <h3 id="4-a-b-testing">4. A/B Testing</h3>
             <p>Exads would like to A/B test some promotional designs to see which provides the best conversion rate.
                 Write a snippet of PHP code that redirects end users to the different designs based on the data
                 provided by this library: <a href="https://packagist.org/packages/exads/ab-test-data">packagist.org/exads/ab-test-data</a></p>
             <h4 id="execute-after-run-up-docker-containers-">Execute (After run up docker containers)</h4>
             <p><a href="http://localhost:8080/abtest">http://localhost:8080/abtest</a></p>
+            <h4 id="relevant-code-files-">Relevant code files:</h4>
+            <ul>
+                <li><code>app/src/Libraries/ABTestHandler.php</code></li>
+            </ul>
             <h3 id="running-tests">Running Tests</h3>
             <pre><code class="lang-BASH">docker compose <span class="hljs-keyword">run</span><span class="bash"> composer <span class="hljs-built_in">test</span></span>
 </code></pre>
@@ -135,9 +154,13 @@ require_once dirname(__DIR__) . '/header.php';
 </code></pre>
             <h3 id="code-sniffer-linter">Code Sniffer Linter</h3>
             <pre><code class="lang-BASH">docker compose <span class="hljs-built_in">exec</span> php-service composer phpcs          <span class="hljs-comment"># Detect coding standards violations (PSR-1, PSR-2, PSR-12)</span>
-docker compose <span class="hljs-built_in">exec</span> php-service phpcbf                  <span class="hljs-comment"># Try to automatically correct this coding standard violations</span>
+docker compose <span class="hljs-built_in">exec</span> php-service composer phpcbf                  <span class="hljs-comment"># Try to automatically correct this coding standard violations</span>
+</code></pre>
+            <h3 id="static-analyser">Static Analyser</h3>
+            <pre><code class="lang-BASH">docker compose <span class="hljs-built_in">exec</span> php-service composer phpstan          <span class="hljs-comment"># Run static analyser</span>
 </code></pre>
             <h3 id="ps-to-run-the-application-port-8080-on-localhost-127-0-0-1-must-be-free-">PS.:To run the application, port 8080 on localhost (127.0.0.1) must be free.</h3>
+
         </div>
     </div>
 </div>
