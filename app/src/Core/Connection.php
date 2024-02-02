@@ -8,7 +8,6 @@ use PDOException;
 
 class Connection extends PDO
 {
-    // configuração do banco de dados
     private string $dbName;
     private string $dbEngine;
     private string $dbUserName;

@@ -23,7 +23,6 @@ class ASCIIArrayCommand extends Command
     }
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        //TODO: Take care about excepetions
         $startChar = $input->getArgument('startChar');
         $lastChar = $input->getArgument('lastChar');
 

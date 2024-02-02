@@ -97,8 +97,6 @@ class PrimeNumbersTest extends TestCase
 
         $actualGetAnswer = $objPrimeNumber->getAnswer();
 
-        //die(var_dump($actualGetAnswer));
-
         $this->assertIsArray($actualGetAnswer);
         $this->assertCount(10, $actualGetAnswer);
         $this->assertEquals($expected, $actualGetAnswer);
