@@ -12,7 +12,7 @@ class PHPUnitUtil
     {
         $class = new ReflectionClass($obj);
         $method = $class->getMethod($name);
-        // $method->setAccessible(true); // Use this if you are running PHP older than 8.1.0
+
         return $method->invokeArgs($obj, $args);
     }
     public static function getProperty($object, $property)
