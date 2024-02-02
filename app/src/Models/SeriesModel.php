@@ -48,7 +48,7 @@ class SeriesModel extends BaseModel
             FROM %s as S
             INNER JOIN tv_series_intervals as SI ON S.id = SI.tv_series_id
             WHERE SI.week_day = :WEEK_DAY AND SI.show_time >= :TIME %s
-            ORDER BY S.title, SI.week_day, SI.show_time ASC;",
+            ORDER BY SI.week_day, SI.show_time, S.title ASC;",
             $this->tableName,
             $id !== 0 ? 'AND S.id = :ID' : '',
         );
