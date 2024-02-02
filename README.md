@@ -20,29 +20,28 @@ These instructions will get you a copy of the project up and running on your loc
 - Nginx Latest
 - MySQL v8.3.0
 
-
-Build the containers:
+Step 1 - Clone this repo:
 
 ```BASH
-docker compose build
+git clone git@github.com:GilmarBrito/ExadsChallenge.git
 ```
 
-Execute:
+Step 2 - Open folder:
 
 ```BASH
-docker compose up -d && docker compose exec php-service composer install
+cd ExadsChallenge
 ```
 
-If you prefer, you could run just one command, to build and execute:
+Step 3 - Run and build the containers:
 
 ```BASH
-docker compose up --build -d && docker compose exec php-service composer install
+docker compose up --build -d
 ```
 
-Execute:
+Step 4 - Execute:
 
 ```BASH
-docker compose exec php-service composer dump-autoload --optimize 
+docker compose exec php-service composer install && docker compose exec php-service composer dump-autoload --optimize
 ```
 
 ## Challenges
@@ -55,7 +54,7 @@ only multiple of itself then print “[PRIME]”.
 #### Execute
 
 ```BASH
-docker compose run php-service php bin/console.php app:prime [] []
+docker compose run php-service php bin/console.php app:prime [firstNumber] [lastNumber]
 ```
 
 | argument    | type    | description              | mandatory | default |
