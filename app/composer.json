@@ -41,8 +41,8 @@
             "cp -R vendor/twbs/bootstrap/dist/css public/assets",
             "cp -R vendor/twbs/bootstrap/dist/js public/assets"
         ],
-        "phpstan": "vendor/bin/phpstan analyse src tests",
-        "phpcs": "./vendor/bin/phpcs --extensions=php --ignore=./Views/* --standard=PSR1,PSR2,PSR12 src/ tests/; vendor/bin/phpstan analyse src tests",
+        "phpstan": "vendor/bin/phpstan analyse src/ tests/",
+        "phpcs": "./vendor/bin/phpcs --extensions=php --ignore=./Views/* --standard=PSR1,PSR2,PSR12 src/ tests/",
         "phpcbf": "./vendor/bin/phpcbf --extensions=php --ignore=./Views/* --standard=PSR1,PSR2,PSR12 src/ tests/",
         "test": "./vendor/bin/phpunit --colors tests tests",
         "coverage-report": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html=tests/coverage/reports/ tests/"
