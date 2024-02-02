@@ -6,10 +6,11 @@ RUN apt-get update && apt-get install -y zlib1g-dev g++ git libicu-dev zip libzi
     && docker-php-ext-enable apcu \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
+    && pecl install pcov \
+    && docker-php-ext-enable pcov \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY ./app ./
-COPY ./.env ./
 ENV COMPOSER_ALLOW_SUPERUSER=1
