@@ -119,6 +119,8 @@ provided by this library: [packagist.org/exads/ab-test-data](https://packagist.o
 
 [http://localhost:8080/abtest](http://localhost:8080/abtest)
 
+* Refresh page to see A/B tests layouts
+
 #### Relevant code files:
 
 * `app/src/Libraries/ABTestHandler.php`

@@ -142,6 +142,9 @@ require_once dirname(__DIR__) . '/header.php';
                 provided by this library: <a href="https://packagist.org/packages/exads/ab-test-data">packagist.org/exads/ab-test-data</a></p>
             <h4 id="execute-after-run-up-docker-containers-">Execute (After run up docker containers)</h4>
             <p><a href="http://localhost:8080/abtest">http://localhost:8080/abtest</a></p>
+            <ul>
+                <li>Refresh page to see A/B tests layouts</li>
+            </ul>
             <h4 id="relevant-code-files-">Relevant code files:</h4>
             <ul>
                 <li><code>app/src/Libraries/ABTestHandler.php</code></li>
