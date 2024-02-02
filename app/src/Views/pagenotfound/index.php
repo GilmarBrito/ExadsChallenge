@@ -1,3 +1,6 @@
+<?php
+require_once dirname(__DIR__) . '/header.php';
+?>
 <div class="container">
     <div class="row">
         <div class="col-12 text-center">
@@ -5,3 +8,6 @@
         </div>
     </div>
 </div>
+<?php
+require_once dirname(__DIR__) . '/footer.php';
+?>
