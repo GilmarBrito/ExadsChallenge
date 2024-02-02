@@ -1,1 +1,4 @@
 .vscode/settings.json
+app/.phpunit.cache/
+app/public/assets/
+app/tests/coverage/
