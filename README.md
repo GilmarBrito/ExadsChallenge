@@ -39,6 +39,12 @@ If you prefer, you could run just one command, to build and execute:
 docker compose up --build -d && docker compose exec php-service composer install
 ```
 
+Execute:
+
+```BASH
+docker compose exec php-service composer dump-autoload --optimize 
+```
+
 ## Challenges
 ### 1. Prime Numbers
 Write a PHP script that prints all integer values from 1 to 100.
