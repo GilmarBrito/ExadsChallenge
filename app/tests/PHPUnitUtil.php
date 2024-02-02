@@ -6,7 +6,6 @@ namespace ExadsChallengeTest;
 
 use ReflectionClass as ReflectionClass;
 
-
 class PHPUnitUtil
 {
     public static function callMethod($obj, $name, array $args): mixed

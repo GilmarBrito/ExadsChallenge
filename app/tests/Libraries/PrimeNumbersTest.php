@@ -78,7 +78,7 @@ class PrimeNumbersTest extends TestCase
     }
 
     #[DataProvider('multiplesProvider')]
-    protected function testGetMultiplesOf(int $number, array $expected): array
+    protected function testGetMultiplesOf(int $number, array $expected): void
     {
         $objPrimeNumber = new PrimeNumbers();
 

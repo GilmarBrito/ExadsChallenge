@@ -34,18 +34,20 @@ class ABTestHandler
             $randomInterval = random_int(1, $splitPercentile);
 
             $currentInterval = 0;
-
+            $result = '';
             foreach ($designs as $design) {
                 $currentInterval += (int) $design['splitPercent'];
                 if ($randomInterval <= $currentInterval) {
                     $this->selectedDesign = $design;
 
-                    return $this->getDesignName($design);
+                    $result =  $this->getDesignName($design);
                 }
             }
         } catch (ABTestException | Exception $e) {
-            return "Error: {$e->getCode()} Message: {$e->getMessage()}";
+            $result = "Error: {$e->getCode()} Message: {$e->getMessage()}";
         }
+
+        return $result;
     }
 
     public function getPromotionName(): string
