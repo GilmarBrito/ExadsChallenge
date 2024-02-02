@@ -121,7 +121,13 @@ docker compose run composer coverage-report        # See the report in tests/cov
 
 ```BASH
 docker compose exec php-service composer phpcs          # Detect coding standards violations (PSR-1, PSR-2, PSR-12)
-docker compose exec php-service phpcbf                  # Try to automatically correct this coding standard violations
+docker compose exec php-service composer phpcbf                  # Try to automatically correct this coding standard violations
+```
+
+### Static Analyser
+
+```BASH
+docker compose exec php-service composer phpstan          # Run static analyser
 ```
 
 ### PS.:To run the application, port 8080 on localhost (127.0.0.1) must be free.
