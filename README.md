@@ -62,6 +62,11 @@ docker compose run php-service php bin/console.php app:prime [firstNumber] [last
 | firstNumber | integer | First number of the list | no        | 1       |
 | lastNumber  | integer | Last number of the list  | no        | 100     |
 
+#### Relevant code files:
+
+* `app/src/Libraries/PrimeNumbers.php`
+* `app/src/Console/PrimeNumbersCommand.php`
+
 ### 2. ASCII Array
 Write a PHP script to generate a random array containing all the ASCII characters from comma (“,”) to
 pipe (“|”). Then randomly remove and discard an arbitrary element from this newly generated array.
@@ -79,6 +84,11 @@ Write the code to efficiently determine the missing character.
 | firstNumber | string  | First Character in the list | no        | ','     |
 | lastNumber  | string  | Last Character in the list  | no        | '\|'    |
 
+#### Relevant code files:
+
+* `app/src/Libraries/ASCIIArray.php`
+* `app/src/Console/ASCIIArrayCommand.php`
+
 ### 3. TV Series
 Populate a MySQL (InnoDB) database with data from at least 3 TV Series using the following structure:
 
@@ -91,9 +101,14 @@ Populate a MySQL (InnoDB) database with data from at least 3 TV Series using the
 Using OOP, write a code that tells when the next TV Series will air based on the current time-date or an
 inputted time-date, and that can be optionally filtered by TV Series title.
 
-##### Execute (After run up docker containers)
+#### Execute (After run up docker containers)
 
 [http://localhost:8080/series](http://localhost:8080/series)
+
+#### Relevant code files:
+
+* `app/src/Models/SeriesModel.php`
+* `app/src/Controllers/SeriesController.php`
 
 ### 4. A/B Testing
 Exads would like to A/B test some promotional designs to see which provides the best conversion rate.
@@ -103,6 +118,10 @@ provided by this library: [packagist.org/exads/ab-test-data](https://packagist.o
 #### Execute (After run up docker containers)
 
 [http://localhost:8080/abtest](http://localhost:8080/abtest)
+
+#### Relevant code files:
+
+* `app/src/Libraries/ABTestHandler.php`
 
 ### Running Tests
 
