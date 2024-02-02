@@ -28,10 +28,13 @@ services:
       - ./docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
     restart: always
     environment:
-      DB_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
-      DB_USER: "${DB_USERNAME}"
+      DB_ENGINE: "${DB_ENGINE}"
+      DB_NAME: "${DB_NAME}"
+      DB_USERNAME: "${DB_USERNAME}"
       DB_PASSWORD: "${DB_PASSWORD}"
-      DB_DATABASE: "${DB_NAME}"
+      DB_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+      DB_HOST: "${DB_HOST}"
+      DB_PORT: "${DB_PORT}"
       XDEBUG_MODE: "${XDEBUG_MODE:-off}"
     networks:
       - exads-network
@@ -39,13 +42,15 @@ services:
       - host.docker.internal:host-gateway
 
   mysql-service:
-    image: mysql:8.3.0
+    build:
+      dockerfile: ./docker/mysql/Dockerfile
     container_name: mysql8-container
     ports:
       - "3306:3306"
     volumes:
-      - mysql-data:/var/lib/mysql
-    command: --default-authentication-plugin=mysql_native_password
+      - /var/lib/mysql
+      - ./docker/mysql/sql/datadump.sql:/docker-entrypoint-initdb.d/datadump.sql
+    command: --authentication_policy=mysql_native_password --init-file /docker-entrypoint-initdb.d/datadump.sql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
@@ -54,9 +59,6 @@ services:
       MYSQL_DATABASE: "${DB_NAME}"
     networks:
       - exads-network
-
-volumes:
-  mysql-data:
 
 networks:
   exads-network:
