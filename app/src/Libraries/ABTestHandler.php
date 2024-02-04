@@ -11,7 +11,6 @@ use Exception;
 class ABTestHandler
 {
     public ABTestData $ABTestProvider;
-    protected array $selectedDesign = [];
     protected string $promotionName;
     protected array $promotionDesigns = [];
     protected int $totalSplitPercentile = 0;
@@ -27,7 +26,6 @@ class ABTestHandler
 
     public function selectDesign(): string
     {
-
         try {
             $designs = $this->ABTestProvider->getAllDesigns();
 
@@ -38,7 +36,6 @@ class ABTestHandler
             foreach ($designs as $design) {
                 $currentInterval += (int) $design['splitPercent'];
                 if ($randomInterval <= $currentInterval) {
-                    $this->selectedDesign = $design;
 
                     return $this->getDesignName($design);
                 }
