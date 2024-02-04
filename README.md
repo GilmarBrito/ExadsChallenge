@@ -79,10 +79,10 @@ Write the code to efficiently determine the missing character.
  docker compose run php-service php bin/console.php app:ascii-array [startChar] [lastChar]
 ```
 
-| argument    | type    | description                 | mandatory | default |
-| ----------- | ------- | --------------------------- | --------- | ------- |
-| firstNumber | string  | First Character in the list | no        | ','     |
-| lastNumber  | string  | Last Character in the list  | no        | '\|'    |
+| argument  | type    | description                 | mandatory | default |
+| --------- | ------- | --------------------------- | --------- | ------- |
+| startChar | string  | First Character in the list | no        | ','     |
+| lastChar  | string  | Last Character in the list  | no        | '\|'    |
 
 #### Relevant code files:
 
@@ -109,6 +109,7 @@ inputted time-date, and that can be optionally filtered by TV Series title.
 
 * `app/src/Models/SeriesModel.php`
 * `app/src/Controllers/SeriesController.php`
+* `docker/mysql/sql/datadump.sql`
 
 ### 4. A/B Testing
 Exads would like to A/B test some promotional designs to see which provides the best conversion rate.
